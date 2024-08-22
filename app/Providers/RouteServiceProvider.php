@@ -38,7 +38,6 @@ class RouteServiceProvider extends ServiceProvider
 
 
                 Route::middleware('web')
-                ->prefix('dashboard')
                 ->group(base_path('routes/dashboard/web.php'));
         });
     }

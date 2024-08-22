@@ -32,6 +32,23 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+    <!-- select language -->
+    <div class="mt-2 mr-2" style="position: relative; display: inline-block;">
+    <i id="language-icon" class="fa fa-globe" style="font-size: 24px; cursor: pointer;"></i>
+    <ul id="language-dropdown" style="display: none; position: absolute; background-color: white; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; list-style: none; padding: 0; margin: 0;">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <li style="padding: 12px 16px;">
+                <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" style="text-decoration: none; color: black; display: block;">
+                    {{ $properties['native'] }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</div>
+    <!-- end select language -->
+
+
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
