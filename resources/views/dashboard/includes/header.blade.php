@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
+
+@include('sweetalert::alert')
+
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -23,10 +26,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="{{route('dashboard.index')}}" class="nav-link">{{__('site.dashboard')}}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">{{__('site.contact')}}</a>
       </li>
     </ul>
 

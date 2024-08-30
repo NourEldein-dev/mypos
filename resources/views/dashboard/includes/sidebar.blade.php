@@ -1,9 +1,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <!-- <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</span>
     </a>
 
     <!-- Sidebar -->
@@ -73,6 +73,18 @@
               </p>
             </a>
           </li>
+
+          @if(auth()->user()->hasPermissionTo('read_users'))
+          <li class="nav-item">
+            <a href="{{route('dashboard.users.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                {{__('site.users')}}
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          @endif
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -660,12 +672,12 @@
               <p>Warning</p>
             </a>
           </li> -->
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informational</p>
+          <li class="nav-item">
+            <a href="{{route('logout')}}" class="nav-link">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p>{{__('site.logout')}}</p>
             </a>
-          </li> -->
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
