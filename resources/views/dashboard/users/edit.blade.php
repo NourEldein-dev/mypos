@@ -50,35 +50,35 @@
         <form action="{{route('dashboard.users.update' , $user->id)}}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="card-body">
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.first_name')}}</label>
                     <input type="text" name="first_name" value="{{$user->first_name}}" class="form-control" id="exampleInputEmail1">
                     @error('first_name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.last_name')}}</label>
                     <input type="text" name="last_name" value="{{$user->last_name}}" class="form-control" id="exampleInputEmail1">
                     @error('last_name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.email')}}</label>
                     <input type="text" name="email" value="{{$user->email}}" class="form-control" id="exampleInputEmail1">
                     @error('email')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.image')}}</label>
                     <input type="file" name="image" class="form-control" id="exampleInputEmail1">
-                    @error('email')
+                    @error('image')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                    <img src="{{$user -> image}}" alt="" width="100px" height="100px">
                   </div>
                 </div>
@@ -105,7 +105,7 @@
 <div style="display: flex; flex-direction: column;">
     <!-- Tab Buttons -->
     @php
-    $model = ['users'];
+    $model = ['users' , 'categories'];
     $maps = ['create' , 'read' , 'update' , 'delete'];
     @endphp
 

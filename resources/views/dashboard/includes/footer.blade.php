@@ -33,7 +33,6 @@
 <!-- select language -->
 
 
-
 <!-- jQuery -->
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->

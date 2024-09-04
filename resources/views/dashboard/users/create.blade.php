@@ -33,7 +33,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">{{__('site.add')}}</h3>
+          <h3 class="card-title">{{__('site.add')}} {{__('site.user')}}</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -50,42 +50,42 @@
         <form action="{{route('dashboard.users.store')}}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="card-body">
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.first_name')}}</label>
                     <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" id="exampleInputEmail1">
                     @error('first_name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.last_name')}}</label>
                     <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" id="exampleInputEmail1">
                     @error('last_name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.email')}}</label>
                     <input type="text" name="email" value="{{old('email')}}" class="form-control" id="exampleInputEmail1">
                     @error('email')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.image')}}</label>
                     <input type="file" name="image" class="form-control" id="exampleInputEmail1">
                     @error('image')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.password')}}</label>
                     <input type="password" name="password" class="form-control" id="exampleInputEmail1">
                     @error('password')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-8">
                     <label for="exampleInputEmail1">{{__('site.password_confirmation')}}</label>
                     <input type="password" name="password_confirmation" class="form-control" id="exampleInputEmail1">
                     @error('password_confirmation')
@@ -116,7 +116,7 @@
 <div style="display: flex; flex-direction: column;">
     <!-- Tab Buttons -->
     @php
-    $model = ['users'];
+    $model = ['users' , 'categories' , 'products' , 'clients'];
     $maps = ['create' , 'read' , 'update' , 'delete'];
     @endphp
 

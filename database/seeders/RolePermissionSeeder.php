@@ -15,17 +15,44 @@ class RolePermissionSeeder extends Seeder
     public function run(): void
     {
         
-        //permissions
+        //users permissions
         Permission::create(['name' => 'create_users']);
         Permission::create(['name' => 'read_users']);
         Permission::create(['name' => 'update_users']);
         Permission::create(['name' => 'delete_users']);
 
-        //roles
-        $role = Role::create(['name' => 'super_admin']);
-        $role->givePermissionTo(['create_users' , 'read_users' , 'update_users' , 'delete_users']);
 
-        $role = Role::create(['name' => 'admin']);
+        //categories permissions
+        Permission::create(['name' => 'create_categories']);
+        Permission::create(['name' => 'read_categories']);
+        Permission::create(['name' => 'update_categories']);
+        Permission::create(['name' => 'delete_categories']);
+
+
+        //products permissions
+        Permission::create(['name' => 'create_products']);
+        Permission::create(['name' => 'read_products']);
+        Permission::create(['name' => 'update_products']);
+        Permission::create(['name' => 'delete_products']);
+
+
+        //clients permissions
+        Permission::create(['name' => 'create_clients']);
+        Permission::create(['name' => 'read_clients']);
+        Permission::create(['name' => 'update_clients']);
+        Permission::create(['name' => 'delete_clients']);
+
+
+
+        //roles
+        $superAdminRole = Role::create(['name' => 'super_admin']);
+
+        $adminRole = Role::create(['name' => 'admin']);
+
+
+        //assign all permissions to super_admin role
+        $allPermissions = Permission::all();
+        $superAdminRole->givePermissionTo($allPermissions);
 
     }
 }

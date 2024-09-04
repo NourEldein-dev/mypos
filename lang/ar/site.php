@@ -6,12 +6,16 @@ return [
     'pos system' => 'ادارة المبيعات',
     'search' => 'بحث',
     'users' => 'المشرفين',
+    'user' => 'مشرف',
+    'name' => 'الاسم',
     'first_name' => 'الاسم الأول',
     'last_name' => 'الاسم الأخير',
     'email' => 'البريد الالكتروني',
-    'action' => 'حدث',
+    'action' => 'الاجراءات',
     'no_data_found' => 'لا يوجد أي سجلات',
     'contact' => 'التواصل',
+    'show_more' => 'عرض المزيد',
+    'show_less' => 'عرض أقل',
 
     'add' => 'اضافة',
     'edit' => 'تعديل',
@@ -21,6 +25,7 @@ return [
     'update' => 'تعديل',
     'permissions' => 'الصلاحيات',
     'image' => 'صورة',
+    'description' => 'الوصف',
 
     'password' => 'كلمة المرور',
     'password_confirmation' => 'تأكيد كلمة المرور',
@@ -34,4 +39,34 @@ return [
     'delete_confirmation_message' => 'هل أنت متأكد من أنك تريد حذف هذه البيانات ؟',
 
     
+    'categories' => 'الأقسام',
+    'all_categories' => 'كل الأقسام',
+    'select_category' => 'اختر القسم',
+    'category' => 'قسم',
+
+    'products' => 'المنتجات',
+    'product' => 'منتج',
+    'products_count' => 'عدد المنتجات',
+    'related_products' => 'المنتجات المرتبطة',
+    'purchase_price' => 'سعر الشراء',
+    'sale_price' => 'سعر البيع',
+    'stock' => 'العدد في المخزن',
+    'profit_percent' => 'المكسب مئويا',
+
+
+    'clients' => 'العملاء',
+    'client' => 'عميل',
+    'mobile' => 'رقم الهاتف',
+    'second_mobile' => 'رقم الهاتف الثانى',
+    'address' => 'العنوان',
+
+    'ar' => [
+        'name' => 'الاسم باللغة العربية',
+        'description' => 'الوصف باللغة العربية',
+    ],
+
+    'en' => [
+        'name' => 'الاسم باللغة الانجليزية',
+        'description' => 'الوصف باللغة الانجليزية',
+    ],
 ];

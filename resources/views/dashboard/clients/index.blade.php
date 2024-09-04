@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>{{__('site.users')}}</h1>
+            <h1>{{__('site.clients')}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}">{{__('site.dashboard')}}</a></li>
-              <li class="breadcrumb-item active">{{__('site.users')}}</li>
+              <li class="breadcrumb-item active">{{__('site.clients')}}</li>
             </ol>
           </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-5 offset-md-2 mb-5 mt-5 pr-5">
-                    <form action="{{route('dashboard.users.index')}}" method="get">
+                    <form action="{{route('dashboard.clients.index')}}" method="get">
                         <div class="input-group">
                             <input type="search" name="search" value="{{request('search')}}" class="form-control form-control-lg" placeholder="{{__('site.search')}}">
                             <div class="input-group-append">
@@ -43,8 +43,8 @@
                     </form>
                 </div>
                     <div class="col-md-3 d-flex align-items-center">
-                      @if (auth()->user()->hasPermissionTo('create_users'))
-                      <a href="{{route('dashboard.users.create')}}" class="btn btn-primary">{{__('site.add')}}</a>
+                      @if (auth()->user()->hasPermissionTo('create_clients'))
+                      <a href="{{route('dashboard.clients.create')}}" class="btn btn-primary">{{__('site.add')}}</a>
                       @else
                       <a href="" class="btn btn-primary disabled">{{__('site.add')}}</a>
                       @endif
@@ -61,7 +61,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">{{__('site.users')}} <small>( {{$users->count()}} )</small></h3>
+          <h3 class="card-title">{{__('site.clients')}} <small>( {{$clients->count()}} )</small></h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -76,40 +76,40 @@
 
         
 
-            @if($users->count() > 0)
+            @if($clients->count() > 0)
         <div class="card-body">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>{{__('site.first_name')}}</th>
-                      <th>{{__('site.last_name')}}</th>
-                      <th>{{__('site.email')}}</th>
-                      <th>{{__('site.image')}}</th>
+                      <th>{{__('site.name')}}</th>
+                      <th>{{__('site.mobile')}}</th>
+                      <th>{{__('site.second_mobile')}}</th>
+                      <th>{{__('site.address')}}</th>
                       <th style="width: 40px">{{__('site.action')}}</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($users as $index => $user)
+                  @foreach($clients as $index => $client)
                     <tr>
                       <td>{{$index + 1}}</td>
-                      <td>{{$user -> first_name}}</td>
-                      <td>{{$user -> last_name}}</td>
-                      <td>{{$user -> email}}</td>
-                      <td><img src="{{$user -> image}}" alt="" width="100px" height="100px"></td>
+                      <td>{{$client -> name}}</td>
+                      <td>{{$client -> mobile}}</td>
+                      <td>{{$client -> second_mobile ?? ''}}</td>
+                      <td>{{$client -> address}}</td>
                       <td>
                         <div class="d-flex justify-content-start">
 
-                        @if (auth()->user()->hasPermissionTo('update_users'))
-                        <a href="{{ route('dashboard.users.edit' , $user->id) }}" class="btn btn-info mx-3">{{ __('site.edit') }}</a>
+                        @if (auth()->user()->hasPermissionTo('update_clients'))
+                        <a href="{{ route('dashboard.clients.edit' , $client->id) }}" class="btn btn-info mx-3">{{ __('site.edit') }}</a>
                         @else
                         <a href="#" class="btn btn-info mx-3 disabled">{{ __('site.edit') }}</a>
                         @endif
     
-                       @if (auth()->user()->hasPermissionTo('delete_users'))
-                        <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="get" class="d-inline" id="delete-form-{{ $user->id }}">
+                       @if (auth()->user()->hasPermissionTo('delete_clients'))
+                        <form action="{{ route('dashboard.clients.destroy', $client->id) }}" method="get" class="d-inline" id="delete-form-{{ $client->id }}">
                           @csrf
-                            <button type="button" class="btn btn-danger mx-3" onclick="confirmDelete('{{ $user->id }}')">
+                            <button type="button" class="btn btn-danger mx-3" onclick="confirmDelete('{{ $client->id }}')">
                              {{ __('site.delete') }}
                           </button>
                         </form>
@@ -123,8 +123,8 @@
                     @endforeach
                   </tbody>
                 </table>
-                 <div class="d-flex justify-content-center">
-                     {{ $users->onEachSide(1)->links('vendor.pagination.bootstrap-4') }}
+                  <div class="d-flex justify-content-center">
+                     {{ $clients->onEachSide(1)->links('vendor.pagination.bootstrap-4') }}
                    </div>
               </div>
               @else

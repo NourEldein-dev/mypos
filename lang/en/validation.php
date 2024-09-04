@@ -198,7 +198,9 @@ return [
         'country'               => 'Country',
         'address'               => 'Address',
         'phone'                 => 'Phone',
-        'mobile'                => 'Mobile',
+        'second_phone'          => 'Second Phone',
+        'mobile'                => 'Phone Number',
+        'second_mobile'         => 'Second Phone Number',
         'age'                   => 'Age',
         'sex'                   => 'Sex',
         'gender'                => 'Gender',
@@ -217,6 +219,22 @@ return [
         'available'             => 'Available',
         'size'                  => 'Size',
         'permissions'           => 'Permissions',
+        'image'                 => 'Image',
+        'purcahse_price'        => 'Purcahse Price',
+        'sale_price'            => 'Sale Price',
+        'stock'                 => 'Quantity in Stock',
+        'category_id'           => 'Category',
+        'phone.0'               => 'Phone Number',
+
+        'ar'=>[
+            'name' => 'Name in Arabic',
+            'description' => 'Description in Arabic',
+        ],
+
+        'en'=>[
+            'name' => 'Name in English',
+            'description' => 'Description in English',
+        ],
     ],
 
 ];

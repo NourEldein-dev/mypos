@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -20,7 +21,7 @@ class UserController extends Controller
         ->when($request->search , function($query) use ($request){
             return $query->where('first_name' , 'like' , '%' . $request->search . '%')
             ->orWhere('last_name' , 'like' , '%' . $request->search . '%');
-        })->latest()->get();
+        })->latest()->paginate(4);
 
         // $users = User::role('admin')->get();
 
@@ -59,9 +60,10 @@ class UserController extends Controller
 
 
         $user = User::create($request_data);
-        $user->assignRole('admin');
 
-        $user->syncPermissions($request->permissions);
+        $user->assignRole('admin');
+        $role = Role::findByName('admin');
+        $role->syncPermissions($request->permissions);
 
         if($user){
             Alert::success(__('site.success'), __('site.added_successfully'));
@@ -103,7 +105,7 @@ class UserController extends Controller
             $request->validate([
                 'first_name' => 'required|min:2|max:50|string',
                 'last_name' => 'required|min:2|max:50|string',
-                'email' => 'required|email:rfc,dns',
+                'email' => 'required|email:rfc,dns|unique:users,email,'. $user->id,
                 'image' => 'mimes:jpg,jpeg,png',
             ]);
     

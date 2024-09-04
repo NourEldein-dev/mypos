@@ -74,6 +74,42 @@
             </a>
           </li>
 
+          @if(auth()->user()->hasPermissionTo('read_categories'))
+          <li class="nav-item">
+            <a href="{{route('dashboard.categories.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                {{__('site.categories')}}
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          @endif
+
+          @if(auth()->user()->hasPermissionTo('read_products'))
+          <li class="nav-item">
+            <a href="{{route('dashboard.products.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                {{__('site.products')}}
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          @endif
+
+          @if(auth()->user()->hasPermissionTo('read_clients'))
+          <li class="nav-item">
+            <a href="{{route('dashboard.clients.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                {{__('site.clients')}}
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          @endif
+
           @if(auth()->user()->hasPermissionTo('read_users'))
           <li class="nav-item">
             <a href="{{route('dashboard.users.index')}}" class="nav-link">
