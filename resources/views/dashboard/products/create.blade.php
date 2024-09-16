@@ -47,7 +47,7 @@
         <div class="card-body">
 
 
-        <form action="{{route('dashboard.products.update', $product->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('dashboard.products.store')}}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="card-body">
 
@@ -56,7 +56,7 @@
                     <select name="category_id" class="form-control" id="exampleInputEmail1">
                     <option value="">{{__('site.all_categories')}}</option>
                         @foreach ($categories as $category)
-                          <option value="{{$category->id}}" {{$product->category_id == $category->id ? 'selected' :''}}>{{$category->name}}</option>
+                          <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected': ''}}>{{$category->name}}</option>
                         @endforeach
                     </select> 
                     @error('category_id')

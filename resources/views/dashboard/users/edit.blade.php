@@ -105,7 +105,7 @@
 <div style="display: flex; flex-direction: column;">
     <!-- Tab Buttons -->
     @php
-    $model = ['users' , 'categories'];
+    $model = ['users' , 'categories' , 'products' , 'clients' , 'orders'];
     $maps = ['create' , 'read' , 'update' , 'delete'];
     @endphp
 

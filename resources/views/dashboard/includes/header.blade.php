@@ -11,6 +11,14 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
+  <!-- icons -->
+  <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/all.css')}}">
+  <!-- product style -->
+  <link rel="stylesheet" href="{{asset('assets/css/product.css')}}">
+
+  <!-- vue.js -->
+ <script src="{{asset('assets/js/vue.global.js')}}"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 

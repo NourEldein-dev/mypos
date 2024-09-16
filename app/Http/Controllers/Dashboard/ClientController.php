@@ -17,6 +17,10 @@ class ClientController extends Controller
             ->orWhere('address' , 'like' , '%' . $request->search . '%');
         })->latest()->paginate(5);
 
+        $title = __('site.delete'). ' ' . __('site.client') . ' !';
+        $text = __('site.delete_confirmation_message');
+        confirmDelete($title, $text);
+
         return view('dashboard.clients.index' , compact('clients'));
     }
 

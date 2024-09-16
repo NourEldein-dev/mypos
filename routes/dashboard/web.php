@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\Client\OrderController;
 use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\LoginController;
@@ -39,12 +40,12 @@ Route::group(
 
         Route::middleware('auth')->prefix('dashboard')->group(function(){
 
-            Route::get('index' , [DashboardController::class , 'index'])->name('dashboard.index');
+            Route::get('/' , [DashboardController::class , 'index'])->name('dashboard.index');
         
             //users routes
             Route::prefix('users')->middleware(['permission:read_users'])->group(function(){
                 //read users
-                Route::get('index' , [UserController::class , 'index'])->name('dashboard.users.index');
+                Route::get('/' , [UserController::class , 'index'])->name('dashboard.users.index');
                 //create users
                 Route::middleware(['permission:create_users'])
                 ->get('create' , [UserController::class , 'create'])->name('dashboard.users.create');
@@ -57,7 +58,7 @@ Route::group(
                 Route::post('update/{id}' , [UserController::class , 'update'])->name('dashboard.users.update');
                 //delete users
                 Route::middleware(['permission:delete_users'])
-                ->get('destroy/{id}' , [UserController::class , 'destroy'])->name('dashboard.users.destroy');
+                ->delete('destroy/{id}' , [UserController::class , 'destroy'])->name('dashboard.users.destroy');
 
             });
             //end users routes
@@ -66,7 +67,7 @@ Route::group(
             //categories routes
             Route::prefix('categories')->middleware(['permission:read_categories'])->group(function(){
                 //read categories
-                Route::get('index' , [CategoryController::class , 'index'])->name('dashboard.categories.index');
+                Route::get('/' , [CategoryController::class , 'index'])->name('dashboard.categories.index');
                 //create categories
                 Route::middleware(['permission:create_categories'])
                 ->get('create' , [CategoryController::class , 'create'])->name('dashboard.categories.create');
@@ -79,7 +80,7 @@ Route::group(
                 Route::post('update/{id}' , [CategoryController::class , 'update'])->name('dashboard.categories.update');
                 //delete categories
                 Route::middleware(['permission:delete_categories'])
-                ->get('destroy/{id}' , [CategoryController::class , 'destroy'])->name('dashboard.categories.destroy');
+                ->delete('destroy/{id}' , [CategoryController::class , 'destroy'])->name('dashboard.categories.destroy');
 
             });
             //end categories routes
@@ -88,7 +89,7 @@ Route::group(
             //products routes
             Route::prefix('products')->middleware(['permission:read_products'])->group(function(){
                 //read products
-                Route::get('index' , [ProductController::class , 'index'])->name('dashboard.products.index');
+                Route::get('/' , [ProductController::class , 'index'])->name('dashboard.products.index');
                 //create products
                 Route::middleware(['permission:create_products'])
                 ->get('create' , [ProductController::class , 'create'])->name('dashboard.products.create');
@@ -101,7 +102,7 @@ Route::group(
                 Route::post('update/{id}' , [ProductController::class , 'update'])->name('dashboard.products.update');
                 //delete products
                 Route::middleware(['permission:delete_products'])
-                ->get('destroy/{id}' , [ProductController::class , 'destroy'])->name('dashboard.products.destroy');
+                ->delete('destroy/{id}' , [ProductController::class , 'destroy'])->name('dashboard.products.destroy');
 
             });
             //end products routes
@@ -110,7 +111,7 @@ Route::group(
             //clients routes
             Route::prefix('clients')->middleware(['permission:read_clients'])->group(function(){
                 //read clients
-                Route::get('index' , [ClientController::class , 'index'])->name('dashboard.clients.index');
+                Route::get('/' , [ClientController::class , 'index'])->name('dashboard.clients.index');
                 //create clients
                 Route::middleware(['permission:create_clients'])
                 ->get('create' , [ClientController::class , 'create'])->name('dashboard.clients.create');
@@ -123,10 +124,32 @@ Route::group(
                 Route::post('update/{id}' , [ClientController::class , 'update'])->name('dashboard.clients.update');
                 //delete clients
                 Route::middleware(['permission:delete_clients'])
-                ->get('destroy/{id}' , [ClientController::class , 'destroy'])->name('dashboard.clients.destroy');
+                ->delete('destroy/{id}' , [ClientController::class , 'destroy'])->name('dashboard.clients.destroy');
 
             });
             //end clients routes
+
+
+            //clients orders routes
+            Route::prefix('clients/orders')->middleware(['permission:read_orders'])->group(function(){
+                //read clients orders
+                Route::get('/' , [OrderController::class , 'index'])->name('dashboard.clients.orders.index');
+                //create clients orders
+                Route::middleware(['permission:create_orders'])
+                ->get('create' , [OrderController::class , 'create'])->name('dashboard.clients.orders.create');
+                
+                Route::post('store' , [OrderController::class , 'store'])->name('dashboard.clients.orders.store');
+                //update clients orders
+                Route::middleware(['permission:update_orders'])
+                ->get('edit/{id}' , [OrderController::class , 'edit'])->name('dashboard.clients.orders.edit');
+
+                Route::post('update/{id}' , [OrderController::class , 'update'])->name('dashboard.clients.orders.update');
+                //delete clients orders
+                Route::middleware(['permission:delete_orders'])
+                ->get('destroy/{id}' , [OrderController::class , 'destroy'])->name('dashboard.clients.orders.destroy');
+
+            });
+            //end clients orders routes
         });
 
         //end dashboard routes

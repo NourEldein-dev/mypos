@@ -43,6 +43,13 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'delete_clients']);
 
 
+        //orders permissions
+        Permission::create(['name' => 'create_orders']);
+        Permission::create(['name' => 'read_orders']);
+        Permission::create(['name' => 'update_orders']);
+        Permission::create(['name' => 'delete_orders']);
+
+
 
         //roles
         $superAdminRole = Role::create(['name' => 'super_admin']);

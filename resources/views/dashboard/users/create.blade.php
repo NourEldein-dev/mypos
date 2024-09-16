@@ -116,7 +116,7 @@
 <div style="display: flex; flex-direction: column;">
     <!-- Tab Buttons -->
     @php
-    $model = ['users' , 'categories' , 'products' , 'clients'];
+    $model = ['categories' , 'products' , 'clients' , 'orders' , 'users'];
     $maps = ['create' , 'read' , 'update' , 'delete'];
     @endphp
 
@@ -138,8 +138,8 @@
           @foreach ($maps as $map)
           <div class="col-3">
                 <div class="form-check">
-                 <input type="checkbox" name="permissions[]" value="{{$map.'_'.$table}}" class="form-check-input" id="check1">
-                  <label class="form-check-label" for="check1">{{__('site.'.$map)}}</label>
+                 <input type="checkbox" name="permissions[]" value="{{$map.'_'.$table}}" class="form-check-input" id="check">
+                  <label class="form-check-label" for="check">{{__('site.'.$map)}}</label>
                 </div>
               </div>
           @endforeach

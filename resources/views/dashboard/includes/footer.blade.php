@@ -41,5 +41,10 @@
 <script src="{{asset('assets/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
+<!-- Include External order JS -->
+<script src="{{ asset('assets/js/order.js') }}"></script>
+<!-- Include External product JS -->
+<script src="{{ asset('assets/js/product.js') }}"></script>
+
 </body>
 </html>

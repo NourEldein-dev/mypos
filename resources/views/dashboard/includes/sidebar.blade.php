@@ -66,7 +66,7 @@
           </li> -->
           <li class="nav-item">
             <a href="{{route('dashboard.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa-solid fa-house mr-2"></i>
               <p>
                 {{__('site.dashboard')}}
                 <!-- <span class="right badge badge-danger">New</span> -->
@@ -77,7 +77,7 @@
           @if(auth()->user()->hasPermissionTo('read_categories'))
           <li class="nav-item">
             <a href="{{route('dashboard.categories.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa-solid fa-list mr-2"></i>
               <p>
                 {{__('site.categories')}}
                 <!-- <span class="right badge badge-danger">New</span> -->
@@ -89,7 +89,7 @@
           @if(auth()->user()->hasPermissionTo('read_products'))
           <li class="nav-item">
             <a href="{{route('dashboard.products.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa-solid fa-layer-group mr-2"></i>
               <p>
                 {{__('site.products')}}
                 <!-- <span class="right badge badge-danger">New</span> -->
@@ -101,7 +101,7 @@
           @if(auth()->user()->hasPermissionTo('read_clients'))
           <li class="nav-item">
             <a href="{{route('dashboard.clients.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa-solid fa-person-walking-luggage mr-2"></i>
               <p>
                 {{__('site.clients')}}
                 <!-- <span class="right badge badge-danger">New</span> -->
@@ -113,7 +113,7 @@
           @if(auth()->user()->hasPermissionTo('read_users'))
           <li class="nav-item">
             <a href="{{route('dashboard.users.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa-regular fa-user mr-2"></i>
               <p>
                 {{__('site.users')}}
                 <!-- <span class="right badge badge-danger">New</span> -->

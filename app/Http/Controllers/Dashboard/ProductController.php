@@ -23,6 +23,10 @@ class ProductController extends Controller
 
         })->latest()->paginate(4);
 
+        $title = __('site.delete'). ' ' . __('site.product') . ' !';
+        $text = __('site.delete_confirmation_message');
+        confirmDelete($title, $text);
+
         return view('dashboard.products.index' , compact('categories' , 'products'));
     }
 
@@ -153,7 +157,7 @@ class ProductController extends Controller
 
             $product->delete();
             Alert::success(__('site.success'), __('site.deleted_successfully'));
-            return redirect()->route('dashboard.users.index');
+            return redirect()->route('dashboard.products.index');
         }
     }
 }

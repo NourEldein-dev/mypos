@@ -18,6 +18,10 @@ class CategoryController extends Controller
 
         })->latest()->paginate(6);
 
+        $title = __('site.delete'). ' ' . __('site.category') . ' !';
+        $text = __('site.delete_confirmation_message');
+        confirmDelete($title, $text);
+
         return view('dashboard.categories.index' , compact('categories'));
     }
 

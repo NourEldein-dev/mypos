@@ -23,7 +23,10 @@ class UserController extends Controller
             ->orWhere('last_name' , 'like' , '%' . $request->search . '%');
         })->latest()->paginate(4);
 
-        // $users = User::role('admin')->get();
+
+        $title = __('site.delete'). ' ' . __('site.user') . ' !';
+        $text = __('site.delete_confirmation_message');
+        confirmDelete($title, $text);
 
         return view('dashboard.users.index' , compact('users'));
     }
@@ -62,8 +65,7 @@ class UserController extends Controller
         $user = User::create($request_data);
 
         $user->assignRole('admin');
-        $role = Role::findByName('admin');
-        $role->syncPermissions($request->permissions);
+        $user->syncPermissions($request->permissions);
 
         if($user){
             Alert::success(__('site.success'), __('site.added_successfully'));
@@ -124,9 +126,9 @@ class UserController extends Controller
 
             $user->update($request_data);
     
+            $user->hasRole('admin');
             $user->syncPermissions($request->permissions);
-            
-    
+
             if($user){
                 Alert::success(__('site.success'), __('site.updated_successfully'));
                 return redirect()->route('dashboard.users.index');
@@ -157,6 +159,7 @@ class UserController extends Controller
             unlink($image);
             //end delete photo
             }
+
 
             $user->delete();
             Alert::success(__('site.success'), __('site.deleted_successfully'));
