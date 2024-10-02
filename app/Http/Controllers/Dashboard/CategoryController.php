@@ -10,31 +10,28 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
-    //index method
-    public function index(Request $request){
-        $categories = Category::when($request->search , function($q) use ($request){
-
-            return $q->whereTranslationLike('name' , '%' . $request->search . '%');
-
+    // Display a listing of categories
+    public function index(Request $request) {
+        $categories = Category::when($request->search, function ($q) use ($request) {
+            return $q->whereTranslationLike('name', '%' . $request->search . '%');
         })->latest()->paginate(6);
 
-        $title = __('site.delete'). ' ' . __('site.category') . ' !';
+        $title = __('site.delete') . ' ' . __('site.category') . ' !';
         $text = __('site.delete_confirmation_message');
         confirmDelete($title, $text);
 
-        return view('dashboard.categories.index' , compact('categories'));
-    }
+        return view('dashboard.categories.index', compact('categories'));
+    } // end of index
 
-    //create method
-    public function create(){
+    // Show the form for creating a new category
+    public function create() {
         return view('dashboard.categories.create');
-    }
+    } // end of create
 
-    //store method
-    public function store(Request $request){
-
+    // Store a newly created category in storage
+    public function store(Request $request) {
         $rules = [];
-        foreach(config('translatable.locales') as $locale){
+        foreach (config('translatable.locales') as $locale) {
             $rules["$locale.name"] = 'required|unique:category_translations,name';
         }
         
@@ -42,67 +39,67 @@ class CategoryController extends Controller
 
         $category = Category::create($validatedData);
 
-        if($category){
+        if ($category) {
             Alert::success(__('site.success'), __('site.added_successfully'));
             return redirect()->route('dashboard.categories.index');
-        }else{
+        } else {
             Alert::error(__('site.error'), __('site.error_found'));
             return redirect()->back();
         }
-    }
+    } // end of store
 
-    //edit method
-    public function edit($id){
+    // Show the form for editing the specified category
+    public function edit($id) {
         $category = Category::all()->find($id);
 
-        if(!$category){
+        if (!$category) {
             Alert::error(__('site.error'), __('site.error_found'));
             return redirect()->route('dashboard.categories.index');
-        }else{
-            return view('dashboard.categories.edit' , compact('category'));
+        } else {
+            return view('dashboard.categories.edit', compact('category'));
         }
-    }
+    } // end of edit
 
-    //update method
-    public function update(Request $request , $id){
+    // Update the specified category in storage
+    public function update(Request $request, $id) {
         $category = Category::find($id);
 
-        if(!$category){
-
+        if (!$category) {
             Alert::error(__('site.error'), __('site.error_found'));
             return redirect()->route('dashboard.categories.index');
-
-        }else{
+        } else {
             $rules = [];
-            foreach(config('translatable.locales') as $locale){
-                $rules["$locale.name"] = ['required' ,
-                 Rule::unique('category_translations' , 'name')->ignore($category->id ,'category_id')];
+            foreach (config('translatable.locales') as $locale) {
+                $rules["$locale.name"] = [
+                    'required',
+                    Rule::unique('category_translations', 'name')->ignore($category->id, 'category_id')
+                ];
             }
 
             $validatedData = $request->validate($rules);
-            $category = $category->update($validatedData);
+            $categoryUpdated = $category->update($validatedData);
 
-            if($category){
+            if ($categoryUpdated) {
                 Alert::success(__('site.success'), __('site.updated_successfully'));
                 return redirect()->route('dashboard.categories.index');
-            }else{
+            } else {
                 Alert::error(__('site.error'), __('site.error_found'));
             }
-        }
+        } // end of else
+    } // end of update
 
-    }
-
-    //destroy method
-    public function destroy($id){
+    // Remove the specified category from storage
+    public function destroy($id) {
         $category = Category::find($id);
 
-        if(!$category){
+        if (!$category) {
             Alert::error(__('site.error'), __('site.error_found'));
-        }else{
-
+        } else {
             $category->delete();
             Alert::success(__('site.success'), __('site.deleted_successfully'));
             return redirect()->route('dashboard.categories.index');
-        }
-    }
-}
+        } // end of else
+        
+    } // end of destroy
+
+} // end of controller

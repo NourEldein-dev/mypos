@@ -2,7 +2,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2021 <a href="#">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -14,23 +14,8 @@
 <!-- ./wrapper -->
 
 
-<!-- select language -->
-<script>
-    document.getElementById('language-icon').addEventListener('click', function() {
-        var dropdown = document.getElementById('language-dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    });
 
-    window.onclick = function(event) {
-        if (!event.target.matches('#language-icon')) {
-            var dropdown = document.getElementById('language-dropdown');
-            if (dropdown.style.display === 'block') {
-                dropdown.style.display = 'none';
-            }
-        }
-    };
-</script>
-<!-- select language -->
+
 
 
 <!-- jQuery -->
@@ -43,8 +28,15 @@
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 <!-- Include External order JS -->
 <script src="{{ asset('assets/js/order.js') }}"></script>
+<!-- Include External data-chart JS -->
+<script src="{{ asset('assets/js/data_chart.js') }}"></script>
+<!-- Include Chart JS -->
+<script src="{{ asset('assets/js/chart.umd.js') }}"></script>
 <!-- Include External product JS -->
 <script src="{{ asset('assets/js/product.js') }}"></script>
-
+<!--include select language file -->
+<script src="{{ asset('assets/js/select_language.js') }}"></script>
+<!--include permissions file -->
+<script src="{{ asset('assets/js/users_permissions.js') }}"></script>
 </body>
 </html>

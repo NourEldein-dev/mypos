@@ -39,4 +39,8 @@ class Product extends Model implements TranslatableContract
         $profit_percent = $profit * 100 / $this->purchase_price;
         return number_format($profit_percent , 2);
     }
+
+    public function orders(){
+        return $this->belongsToMany(Order::class)->withPivot('quantity');
+    }
 }

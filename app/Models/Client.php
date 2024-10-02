@@ -20,4 +20,13 @@ class Client extends Model
         'second_mobile',
         'address',
     ];
+
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function getNameAttribute($value){
+        return ucfirst($value);
+    } 
 }

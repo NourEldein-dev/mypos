@@ -15,5 +15,6 @@ class LogoutController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('login');
-    }
-}
+    }//end of logout
+
+}//end of controller

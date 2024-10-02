@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-            $table->string('image')->default('default.jpeg');
+            $table->string('image')->default('images/products/default.jpg');
             $table->double('purchase_price' , 8 , 2);
             $table->double('sale_price' , 8 , 2);
             $table->integer('stock');
